@@ -1,5 +1,5 @@
 // src/api/productApi.js
-const API_BASE_URL = "https://express-mysql-api-ni12.onrender.com/api/products"; // Uses the Vite proxy
+const API_BASE_URL = import.meta.env.VITE_API_URL; // Uses the environment variable from Vercel
 
 // GET All Products (Read)
 export const getAllProducts = async () => {
@@ -8,7 +8,6 @@ export const getAllProducts = async () => {
     if (!response.ok) {
       throw new Error("Failed to fetch products.");
     }
-
     return response.json();
   } catch (error) {
     console.error("Error fetching products:", error);
@@ -32,7 +31,7 @@ export const createProduct = async (productData) => {
       throw new Error(errorDetail.error || "Failed to create product.");
     }
 
-    return response.json(); // The backend returns the new product object
+    return response.json(); // Returns the new product object
   } catch (error) {
     console.error("Error creating product:", error);
     throw error;
@@ -55,7 +54,7 @@ export const updateProduct = async (id, productData) => {
       throw new Error(errorDetail.error || `Failed to update product ${id}.`);
     }
 
-    return response.json(); // Or return { message: "Product updated successfully." }
+    return response.json();
   } catch (error) {
     console.error("Error updating product:", error);
     throw error;
