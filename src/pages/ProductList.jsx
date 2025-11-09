@@ -81,7 +81,7 @@ const ProductList = () => {
 
   return (
     <div className="product-page">
-      <h1>Simple Products CRUD Application</h1>
+      <h1>GMJFT Haircare Products</h1>
 
       <section className="form-section">
         <ProductForm
